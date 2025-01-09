@@ -32,9 +32,11 @@ export const authLine = async ({
 }: {
   accessToken: string;
 }): Promise<{ accessToken: string; user: User, lineUser: LineUser }> => {
+  console.log("accessToken api", accessToken);
   const response = await axios.post("/api/verify-line", {
     accessToken
   });
+  console.log("response", response);
   return response.data;
 };
 
