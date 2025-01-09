@@ -15,13 +15,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const response = await axios.post("https://api.line.me/v2/profile", {
+    const response = await axios.get("https://api.line.me/v2/profile", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-
-    console.log("response", response);
 
     const userInfo = response.data;
 
@@ -31,16 +29,20 @@ export async function POST(request: NextRequest) {
       where: { lineId: userInfo.userId },
     });
 
+    console.log("Current user", existingUser);
+
     if (!existingUser) {
       const newUser = await prisma.user.create({
         data: {
-          lineId: userInfo.lineId,
+          lineId: userInfo.userId,
           displayName: userInfo.displayName,
           avatar: userInfo.pictureUrl ?? "",
           provider: "line",
           wallet: "",
         },
       });
+
+      console.log("new user ", newUser);
 
       return NextResponse.json({
         accessToken: createAccessToken({
