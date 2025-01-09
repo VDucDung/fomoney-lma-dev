@@ -4,7 +4,10 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
+  console.log("1")
+  console.log("request", request);
   try {
+    console.log("response", request);
     const body = await request.json();
 
     const accessToken = body.accessToken;
@@ -64,6 +67,7 @@ export async function POST(request: NextRequest) {
       { status: 200 },
     );
   } catch (e: unknown) {
+    console.error("Error:", e);
     return NextResponse.json({ message: e }, { status: 400 });
   }
 }
