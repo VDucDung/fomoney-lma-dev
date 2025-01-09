@@ -4,15 +4,10 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
-  console.log("1")
-  console.log("request", request);
   try {
-    console.log("response", request);
     const body = await request.json();
 
     const accessToken = body.accessToken;
-
-    console.log("accessToken", accessToken);
 
     if (!accessToken) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
@@ -26,13 +21,9 @@ export async function POST(request: NextRequest) {
 
     const userInfo = response.data;
 
-    console.log("userInfo", userInfo);
-
     const existingUser = await prisma.user.findUnique({
       where: { lineId: userInfo.userId },
     });
-
-    console.log("Current user", existingUser);
 
     if (!existingUser) {
       const newUser = await prisma.user.create({
@@ -44,8 +35,6 @@ export async function POST(request: NextRequest) {
           wallet: "",
         },
       });
-
-      console.log("new user ", newUser);
 
       return NextResponse.json({
         accessToken: createAccessToken({

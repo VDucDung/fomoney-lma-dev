@@ -37,7 +37,11 @@ import { useAuthLine } from "@/hooks/use-auth-line";
 export default function UserInfo() {
   useAuth();
   const { isLoggedIn } = useAuthLine();
+
+  console.log(isLoggedIn)
   const user = useUser();
+
+  console.log(user)
   const { reset } = useUserActions();
   const { disconnect } = useWallet();
   const [open, setOpen] = useState(false);
@@ -54,7 +58,7 @@ export default function UserInfo() {
   return (
     <>
       {/* SonicX */}
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger className="flex h-10 items-center gap-2 rounded-lg bg-[#512DA8] px-2">
           {user.provider === AuthProvider.sonicx ? (
             <Image src={sonicx} alt="sonicx" width={20} height={20} />
@@ -68,7 +72,7 @@ export default function UserInfo() {
             <LogOut /> Log out
           </DropdownMenuItem>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
       {/* LINE */}
       <DropdownMenu>
         <DropdownMenuTrigger className="flex h-10 items-center gap-2 rounded-lg bg-[#512DA8] px-2">
