@@ -79,6 +79,7 @@ export default function UserInfo() {
               <div>   
                 {user?.lineUser?.pictureUrl && (
                 <Image
+                  className="rounded-full"
                   src={user?.lineUser?.pictureUrl}
                   width={24}
                   height={24}
