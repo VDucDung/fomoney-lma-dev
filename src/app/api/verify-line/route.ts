@@ -34,6 +34,19 @@ export async function POST(request: NextRequest) {
       where: { lineId: userInfo.userId },
     });
 
+    const latestSeason = await prisma.season.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    const point = await prisma.point.findFirst({
+      where: {
+        userId: existingUser?.id,
+        seasonId: latestSeason?.id,
+      },
+    });
+
     if (!existingUser) {
       const newUser = await prisma.user.create({
         data: {
@@ -52,6 +65,8 @@ export async function POST(request: NextRequest) {
         }),
         user: newUser,
         lineUser: userInfo,
+        season: latestSeason,
+        point,
       });
     }
 
@@ -63,6 +78,8 @@ export async function POST(request: NextRequest) {
         }),
         user: existingUser,
         lineUser: userInfo,
+        season: latestSeason,
+        point,
       },
       { status: 200 },
     );
