@@ -63,10 +63,8 @@ export async function POST(request: NextRequest) {
           userId: newUser.id,
           provider: "line",
         }),
-        user: newUser,
+        user: { ...newUser, season: latestSeason, point },
         lineUser: userInfo,
-        season: latestSeason,
-        point,
       });
     }
 
@@ -76,10 +74,8 @@ export async function POST(request: NextRequest) {
           userId: userInfo.userId,
           provider: "line",
         }),
-        user: existingUser,
+        user: { ...existingUser, season: latestSeason, point },
         lineUser: userInfo,
-        season: latestSeason,
-        point,
       },
       { status: 200 },
     );
