@@ -1,7 +1,13 @@
 import { createAccessToken } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { NextRequest, NextResponse } from "next/server";
+
+interface LineProfileResponse {
+  userId: string;
+  displayName: string;
+  pictureUrl: string | null;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,13 +19,16 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const response = await axios.get("https://api.line.me/v2/profile", {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
+    const response: AxiosResponse<LineProfileResponse> = await axios.get(
+      "https://api.line.me/v2/profile",
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
       },
-    });
+    );
 
-    const userInfo = response.data;
+    const userInfo: LineProfileResponse = response.data;
 
     const existingUser = await prisma.user.findUnique({
       where: { lineId: userInfo.userId },
@@ -32,7 +41,7 @@ export async function POST(request: NextRequest) {
           displayName: userInfo.displayName,
           avatar: userInfo.pictureUrl ?? "",
           provider: "line",
-          wallet: "",
+          wallet: userInfo.userId,
         },
       });
 
