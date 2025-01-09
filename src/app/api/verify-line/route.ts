@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     if (!existingUser) {
       const newUser = await prisma.user.create({
         data: {
-          lineId: userInfo.lineId,
+          lineId: userInfo.userId,
           displayName: userInfo.displayName,
           avatar: userInfo.pictureUrl ?? "",
           provider: "line",

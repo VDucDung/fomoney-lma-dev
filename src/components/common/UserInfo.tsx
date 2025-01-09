@@ -87,7 +87,6 @@ export default function UserInfo() {
             </>
           )
           }
-          <span>{shortenWalletAddress(user.address, 4)}</span>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuItem className="text-red-500" onClick={handleLogout}>
