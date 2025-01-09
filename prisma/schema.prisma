@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String           @id @default(uuid()) @db.Uuid
+  lineId         String           @unique
+  displayName    String
+  avatar         String?          @default("")
+  wallet         String           @unique
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  point          Point[]
+  provider       AuthProvider
+  depositHistory DepositHistory[]
+
+  @@map("user")
+}
+
+model Point {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  point     Int      @default(0)
+  User      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?  @db.Uuid
+  season    Season   @relation(fields: [seasonId], references: [id])
+  seasonId  String   @db.Uuid
+
+  @@unique([userId, seasonId])
+  @@map("point")
+}
+
+model Season {
+  id             String           @id @default(uuid()) @db.Uuid
+  createdAt      DateTime         @default(now()) @map("created_at")
+  updatedAt      DateTime         @updatedAt @map("updated_at")
+  endtime        DateTime
+  name           String           @unique
+  Point          Point[]
+  DepositHistory DepositHistory[]
+
+  @@map("season")
+}
+
+model DepositHistory {
+  id        String   @id @default(uuid()) @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?  @db.Uuid
+  amount    Decimal
+  season    Season   @relation(fields: [seasonId], references: [id])
+  seasonId  String   @db.Uuid
+  token     Token    @default(solana)
+
+  @@map("deposit_history")
+}
+
+enum AuthProvider {
+  solana
+  sonicx
+  line
+}
+
+enum Token {
+  solana
+  sonic
+  line
+}

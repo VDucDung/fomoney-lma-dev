@@ -1,0 +1,33 @@
+.score {
+  background: var(--score-background);
+  border: calc(var(--pixel-size) * 0.5) solid var(--score-background);
+  border-radius: calc(var(--pixel-size) * 0.75);
+  color: white;
+  font-size: calc(var(--pixel-size) * 2);
+  line-height: calc(var(--pixel-size) * 3);
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  width: calc(var(--pixel-size) * 15);
+  height: calc(var(--pixel-size) * 5);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.score > div {
+  font-size: calc(var(--pixel-size) * 2);
+  color: var(--secondary-backgroud);
+}
+
+@media (min-width: 512px) {
+  .score {
+    border: calc(var(--pixel-size) * 1) solid var(--score-background);
+    font-size: calc(var(--pixel-size) * 2);
+    line-height: calc(var(--pixel-size) * 3.5);
+  }
+
+  .score > div {
+    font-size: calc(var(--pixel-size) * 2);
+  }
+}

@@ -1,0 +1,347 @@
+body {
+    /* background-color: rgb(10, 3, 27); */
+    background-color: rgb(9, 1, 42, 0);
+}
+
+.homebody {
+    margin: calc(var(--pixel-size) * 0) auto;
+    background-repeat: no-repeat;
+    /* background-size:100% 100%; */
+    background-size: cover;
+    /* background-color: rgb(10, 3, 27); */
+    background-color: rgb(9, 1, 42, 0);
+
+}
+
+.homebase {
+    color: white;
+}
+
+.prize_pool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.prize_logo_sonic {
+    height: 85px;
+    width: 85px;
+    /* width: ; */
+    margin-top: 5px;
+}
+
+@font-face {
+    font-family: lcd;
+    src: url('../assets/font/lcd.ttf');
+}
+
+.prize_num_sonic {
+    font-weight: bolder;
+    font-size: 100px;
+    font-family: lcd;
+    color: rgb(240, 179, 88);
+    margin-right: 20px;
+    -webkit-text-stroke: 3px rgb(254, 254, 254);
+    text-shadow: 0 0 10px #ae9c82, 0 0 20px #ae9c82, 0 0 30px #ae9c82, 0 0 30px #ae9c82;
+}
+
+.purchase_container_sonic {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.purchase_middle_1_sonic {
+    height: 450px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* background-color: #170f23dc; */
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    font-family: futura;
+    font-weight: 500;
+}
+
+.purchase_title {
+    text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: futura;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+}
+
+.pill_choose_sonic {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    margin-right: 35px;
+    margin-left: 40px;
+}
+
+.pillblue_2 {
+    height: 110px;
+    width: 110px;
+    /* margin-right: 50px; */
+}
+
+.pillblue_4{
+    height: 80px;
+    width: 80px;
+    margin-right: 30px;
+}
+.pillred_4{
+    height: 80px;
+    width: 80px;
+    margin-right: 30px;
+}
+
+.pill_score{
+    margin-top:10px;
+    /* width: 400px; */
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+
+
+.pillblue_2:hover {
+    transform: scale(1.1)
+}
+
+.pillblue_2.selected {
+    height: 150px;
+    width: 150px;
+}
+
+.pillred_2 {
+    height: 110px;
+    width: 110px;
+
+}
+
+.pillred_2.selected {
+    height: 150px;
+    width: 150px;
+
+}
+
+.pillred_2:hover {
+    transform: scale(1.1)
+}
+
+
+
+
+.team_choose {
+    display: flex;
+    justify-content: space-around;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.purchasse_middle_button_go {
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 100px;
+    height: 30px;
+    width: 120px;
+    /* background-color: rgb(147, 129, 227); */
+    background: linear-gradient(to right, rgb(147, 129, 227), rgb(59, 64, 203));
+    color: white;
+    border-color: rgba(255, 255, 255, 0);
+    /* outline-style: solid; */
+    outline-color: rgba(255, 255, 255);
+    border-width: 0px;
+    font-family: futura;
+    /* margin-left: 20px; */
+}
+
+
+
+
+.teampompt {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: medium;
+    margin-top: 30px;
+    font-family: futura;
+}
+
+.teampompt_title {
+    font-weight: 600;
+}
+
+.congra_emoji{
+    font-size: x-large;
+}
+
+
+
+.team_confirm_bt {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.confirm_bt {
+    font-size: medium;
+    font-weight: 600;
+    border-radius: 100px;
+    height: 30px;
+    width: 120px;
+    background-color: rgb(147, 129, 227);
+    /* background: linear-gradient(to right, rgb(147, 129, 227), rgb(59, 64, 203)); */
+    color: white;
+    border-color: rgba(255, 255, 255, 0);
+    outline-style: solid;
+    outline-color: rgba(255, 255, 255);
+    border-width: 1px;
+    font-family: futura;
+    cursor: pointer;
+}
+
+.confirm_bt:hover {
+    background-color: rgb(132, 115, 203);
+}
+
+.play_container{
+    justify-items:center;
+}
+
+
+
+
+@media screen and (max-width: 800px) {
+    .homebody {
+        background-color: rgb(9, 1, 42, 0);
+        background-image: none;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+    }
+
+
+
+    .header_logo {
+        display: block;
+        margin: 0 auto;
+        width: 250px;
+        height: 100px;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+
+
+    .prize_pool {
+        margin-top:80px;
+
+    }
+
+    .prize_logo_sonic {
+        height: 65px;
+        width: 65px;
+        margin-right:20px;
+    }
+
+    .prize_num_sonic {
+        color: rgb(241, 220, 110);
+        font-weight: 400;
+        font-size: 80px;
+        -webkit-text-stroke: 1px rgba(103, 64, 17, 0.912);
+        /* text-shadow: 0 0 1px #aea997, 0 0 2px #aea997, 0 0 3px #aea997, 0 0 4px #aea997; */
+        margin-right: 10px;
+    }
+
+
+
+
+    .purchase_title{
+        text-align: center;
+        font-weight: bold;
+        font-size: large;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-family: futura;
+    }
+
+    .purchase_middle_1_sonic {
+        width: 80%;
+        height: 510px;
+        margin-left: 20px;
+        margin-right: 20px;
+        background-color: transparent;
+        /* font-family: Georgia, 'Times New Roman', Times, serif; */
+        font-family: futura;
+        font-weight: 500;
+    }
+
+    .pillblue_2 {
+        height: 80px;
+        width: 80px;
+        /* margin-right: 50px; */
+    }
+    .pillblue_4{
+        height: 60px;
+        width: 60px;
+        margin-right: 30px;
+    }
+    .pillred_4{
+        height: 60px;
+        width: 60px;
+        /* margin-right: 50px; */
+        margin-right: 30px;
+    }
+
+    .pillblue_2:hover {
+        transform: scale(1.1)
+    }
+
+    .pillblue_2.selected {
+        height: 100px;
+        width: 100px;
+    }
+
+    .pillred_2 {
+        height: 80px;
+        width: 80px;
+        /* margin-right: 50px; */
+    }
+
+    .pillred_2:hover {
+        transform: scale(1.1)
+    }
+
+    .pillred_2.selected {
+        height: 100px;
+        width: 100px;
+    }
+
+}
+
+
+
+
+/*play part*/
+
+/* .best_score{
+    font-family: futura;
+} */

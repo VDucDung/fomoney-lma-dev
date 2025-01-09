@@ -1,0 +1,51 @@
+.board {
+  margin-top: 20px;
+  position: relative;
+  width: calc(var(--pixel-size) * 8 * 4 + var(--pixel-size) * 4);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--board-background);
+  border: calc(var(--pixel-size) * 0.5) solid var(--background);
+  border-radius: calc(var(--pixel-size) * 0.75);
+}
+
+.cell {
+  width: calc(var(--pixel-size) * 8);
+  height: calc(var(--pixel-size) * 8);
+  margin: calc(var(--pixel-size) * 0.5);
+  border-radius: calc(var(--pixel-size) * 0.5);
+  background: var(--cell-background);
+}
+
+.tiles {
+  position: absolute;
+  z-index: 2;
+  margin: calc(var(--pixel-size) * 0.5);
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media (min-width: 512px) {
+  .board {
+    width: calc(var(--pixel-size) * 11 * 4 + var(--pixel-size) * 6.5);
+  }
+
+  .grid {
+    border: calc(var(--pixel-size) * 1) solid var(--board-background);
+  }
+
+  .cell {
+    width: calc(var(--pixel-size) * 10.5);
+    height: calc(var(--pixel-size) * 10.5);
+    margin: calc(var(--pixel-size) * 0.8);
+  }
+
+  .tiles {
+    margin: calc(var(--pixel-size) * 1);
+  }
+}
