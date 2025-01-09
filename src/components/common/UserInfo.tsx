@@ -15,14 +15,12 @@ import {
   KeySquareIcon,
   Loader2Icon,
   LogOut,
-  Wallet,
   XIcon,
 } from "lucide-react";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import Image from "next/image";
 import sonicx from "../../../public/images/sonicx.png";
 import { useUser, useUserActions } from "@/store/user";
-import { shortenWalletAddress } from "@/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
