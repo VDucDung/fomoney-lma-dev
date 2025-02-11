@@ -34,7 +34,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} relative flex min-h-screen w-full justify-center bg-homepage-bg bg-cover bg-center bg-no-repeat antialiased`}
       >
         <Toaster />
-        <div className="w-full max-w-[450px] overflow-hidden rounded-lg border-purple-600 md:border touch-none overscroll-contain">
+        <div className="w-full max-w-[450px] overflow-hidden rounded-lg border-purple-600 md:border">
           <AppProvider>
             <Header />
             <Tabsbar />
