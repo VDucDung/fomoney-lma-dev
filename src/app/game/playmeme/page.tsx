@@ -11,6 +11,7 @@ import "@/styles/style.css";
 import { useAuth } from "@/hooks/use-auth";
 import { useAllowPlay } from "@/store/game";
 import { redirect } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Playmeme() {
   const data = { team: "me" };
@@ -19,6 +20,22 @@ export default function Playmeme() {
   if (!allowPlayGame) {
     return redirect("/game");
   }
+
+  useEffect(() => {
+    const handleTouchStart = (e: TouchEvent) => {
+      const board = document.getElementById("play_container");
+      if (board && !board.contains(e.target as Node)) {
+        alert("Không được lướt ngoài board!");
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    document.addEventListener("touchstart", handleTouchStart, { passive: false });
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+    };
+  }, []);
 
   return (
     <GameProvider>

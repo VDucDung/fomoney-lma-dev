@@ -222,8 +222,6 @@ body {
 
 .play_container {
     justify-items: center;
-    touch-action: none;
-    overscroll-behavior: contain;
 }
 
 
