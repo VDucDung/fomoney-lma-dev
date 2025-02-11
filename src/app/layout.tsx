@@ -6,7 +6,6 @@ import Header from "@/components/layouts/Header";
 import Tabsbar from "@/components/common/Tabsbar";
 import Footer from "@/components/layouts/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,12 +28,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    useEffect(() => {
-        const preventSwipeHandler = (e: TouchEvent) => {
-          e.preventDefault();
-        };
-        document.body.addEventListener("touchmove", preventSwipeHandler, { passive: false });
-    }, []);
 
   return (
     <html lang="en">
