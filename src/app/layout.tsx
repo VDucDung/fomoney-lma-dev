@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} relative flex min-h-screen w-full justify-center bg-homepage-bg bg-cover bg-center bg-no-repeat antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} relative flex min-h-screen w-full justify-center bg-homepage-bg bg-cover bg-center bg-no-repeat antialiased overscroll-none touch-none overflow-hidden`}
       >
         <Toaster />
         <div className="w-full max-w-[450px] overflow-hidden rounded-lg border-purple-600 md:border">
