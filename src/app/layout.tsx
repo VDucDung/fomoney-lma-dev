@@ -6,7 +6,7 @@ import Header from "@/components/layouts/Header";
 import Tabsbar from "@/components/common/Tabsbar";
 import Footer from "@/components/layouts/Footer";
 import { Toaster } from "@/components/ui/toaster";
-import PreventSwipe from "@/components/common/PreventSwipe";
+import { useEffect } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,12 +29,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    useEffect(() => {
+        const preventSwipeHandler = (e: TouchEvent) => {
+          e.preventDefault();
+        };
+        document.body.addEventListener("touchmove", preventSwipeHandler, { passive: false });
+    }, []);
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} relative flex min-h-screen w-full justify-center bg-homepage-bg bg-cover bg-center bg-no-repeat antialiased`}
       >
-          <PreventSwipe />
         <Toaster />
         <div className="w-full max-w-[450px] overflow-hidden rounded-lg border-purple-600 md:border">
           <AppProvider>
